@@ -10,7 +10,7 @@ chLabels = session.data.channelLabels(:,1);
 sampRate = session.data.sampleRate;
 
 szStartPoint = szStartTime*sampRate;
-pointBefore = -(timeWindow*sampRate) + szStartPoint;
+pointBefore = -(timeWindow*sampRate) + szStartPoint + 1;
 pointAfter = timeWindow*sampRate + szStartPoint;
 
 
