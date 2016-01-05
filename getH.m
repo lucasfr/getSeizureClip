@@ -1,3 +1,7 @@
+%The function getH returns an EEG epoch, downloaded from the ieeg.org
+%portal, containing an epileptic seizure and the channel labels.
+%This is still a function to be developed. Hope to include comments soon. 
+
 function [data,szStartPoint, chLabels] = getH(datasetId,userName, pwdFile, szStartTime, timeWindow) 
 
 session = IEEGSession(datasetId,userName,pwdFile);
