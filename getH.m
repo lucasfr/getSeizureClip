@@ -1,14 +1,11 @@
-datasetId = 'I001_P005_D01';
-userName = 'lucasfr';
-pwdFile = 'luc_ieeglogin.bin'
-szStarttime = 
-timeBefore = 
-timeAfter = 
-
-
+function [data,szStartPoint] = getH(datasetId,userName, pwdFile, szStartTime, timeBefore,timeAfter) 
 session = IEEGSession(datasetId,userName,pwdFile);
 chNumber = numel(session.data.channelLabels(:,1));
 sampRate = session.data.sampleRate;
+
+szStartPoint = szStartTime*sampRate;
+pointBefore = timeBefore*sampRate;
+pointAfter = timeAfter*sampRate;
 
 
 
@@ -17,4 +14,5 @@ for i = 1:chNumber
             i
 end
 
+end
 % dlmwrite('I001_P005_D01.dat',data,'delimiter','\t')
