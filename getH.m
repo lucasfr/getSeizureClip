@@ -1,18 +1,19 @@
-function [data,szStartPoint] = getH(datasetId,userName, pwdFile, szStartTime, timeBefore,timeAfter) 
+function [data,szStartPoint, chLabels] = getH(datasetId,userName, pwdFile, szStartTime, timeWindow) 
+
 session = IEEGSession(datasetId,userName,pwdFile);
 chNumber = numel(session.data.channelLabels(:,1));
+chLabels = session.data.channelLabels(:,1);
 sampRate = session.data.sampleRate;
 
 szStartPoint = szStartTime*sampRate;
-pointBefore = timeBefore*sampRate;
-pointAfter = timeAfter*sampRate;
+pointBefore = -(timeWindow*sampRate) + szStartPoint;
+pointAfter = timeWindow*sampRate + szStartPoint;
 
 
 
-for i = 1:chNumber
-            data(i,:) = session.data.getvalues(117000001:135000000,i);
-            i
+for ch = 1:chNumber
+            data(ch,:) = session.data.getvalues(pointBefore:pointAfter,ch);
+            ch
 end
 
 end
-% dlmwrite('I001_P005_D01.dat',data,'delimiter','\t')
