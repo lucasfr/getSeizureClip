@@ -2,11 +2,9 @@
 This Matlab code aims to download an EEG epoch from the ieeg.org portal. The function was created to get a 'seizure clip', i.e., a segment
 in which the ictal start is centered. The command for the function is
 
-. . .
-
+...
 [data,szStartPoint, chLabels, datasetId] = getSeizureClip(datasetId,userName, pwdFile, szStartTime, timeWindow)
-
-. . .
+...
 
 For the input:
 
