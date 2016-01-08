@@ -2,7 +2,7 @@
 %portal, containing an epileptic seizure and the channel labels.
 %This is still a function to be developed. Hope to include comments soon. 
 
-function [data,szStartPoint, chLabels, datasetId] = getH(datasetId,userName, pwdFile, szStartTime, timeWindow) 
+function [data,szStartPoint, chLabels, datasetId] = getSeizureClip(datasetId,userName, pwdFile, szStartTime, timeWindow) 
 
 session = IEEGSession(datasetId,userName,pwdFile);
 chNumber = numel(session.data.channelLabels(:,1));
